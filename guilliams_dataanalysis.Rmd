@@ -1,0 +1,42 @@
+---
+title: "Statistical Analysis"
+output: html_notebook
+---
+
+Loading in packages:
+```{r}
+library(readr) 
+library(ggplot2)
+library(scales)
+library(ggthemes)
+library(tidyverse)
+```
+
+Loading in data:
+```{r}
+data <- read_csv("C:/Users/Kayla5SOS/Documents/mejo570/finalstory/data.csv")
+head(data)
+```
+
+For my statistical analysis, I want to use regression to look at a country's vulnerability to climate change and the % of their GDP that comes from the Agriculture sector. My hypothesis is that these values aren't just very closely correlated, but that the % of a country's GDP that comes from agriculture is going to be a huge deciding factor in a country's vulnerability (this will be decided looking at the adjusted r-squared value).
+
+```{r}
+fit <- lm(`%GDP AG` ~ `2017 Vulnerability`, data = data)
+summary(fit)
+```
+
+Analysis: 
+My p-value of .0000000000000022 tells me that there is a very strong correlation/connection between a country's vulnerability and the percentage of their GDP that comes from agriculture, the correlation is definitely not random 
+My adjusted r-squared value of .5831 tells me that 58.31% of a country's vulnerability score can be attributed to the % of their GDP that comes from agriculture. 
+
+News Worthy Summary: 
+According to data from the World Bank, there is a very strong correlation between the percentage of a country's GDP that comes from the agriculture industry and their vulnerability to climate change. In fact, over half of a country's vulnerability score can be solely determined by the percentage of their GDP that comes from agriculture. 
+
+
+
+
+
+
+
+
+

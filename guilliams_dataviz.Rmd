@@ -1,0 +1,48 @@
+---
+title: "Data Vi"
+output: html_notebook
+---
+
+Loading in packages:
+```{r}
+library(readr) 
+library(ggplot2)
+library(scales)
+library(ggthemes)
+```
+
+Loading in data:
+```{r}
+data <- read_csv("C:/Users/Kayla5SOS/Documents/mejo570/finalstory/data.csv")
+head(data)
+```
+
+Creating a scatterplot comparing a country's climate change vulnerability and their % of GDP from agriculture: 
+```{r}
+ggplot(data, aes(x=`2017 Vulnerability`, y=`%GDP AG`)) + 
+  geom_point(alpha=.3) + 
+  geom_smooth(method=lm, 
+              se=FALSE, 
+              mapping = aes(color="Black")) + 
+  geom_hline(yintercept=0, 
+             color="black", 
+             size=.5) +
+  ylim(0,65) +
+  labs(title="Agriculture & Climate Change Vulnerability", 
+       subtitle = "Countries that have GDPs heavily based in agricultural industries are more \nvulnerable to the impacts of climate change than countries that don't.\n  ",
+       x="Vulnerability Score",
+       y="% of GDP from Agriculture", 
+       caption="Data source: The World Bank") +  
+  theme_fivethirtyeight() + 
+  theme(legend.position = "none", 
+        axis.title = element_text(), 
+        axis.title.y = element_text(margin = margin(t = 0, r = 15, b = 10, l = 0)), 
+        axis.title.x = element_text(margin = margin(t = 10, r = 0, b = 10, l = 0)), 
+        axis.line.y = element_line(color="black", size=.5))
+```
+
+The export function in R resulted in some funky sizing, so I right clicked on the image, copied it, and pasted it into a paint file that allowed me to export it as a high quality PNG. 
+
+
+
+
